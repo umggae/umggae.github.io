@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>나의 홈페이지</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문 바로가기</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-name" href="#about">나의 홈페이지</a>
+      <nav aria-label="주요 메뉴">
+        <a href="#about">소개</a>
+        <a href="#interests">관심 분야</a>
+        <a href="#activities">활동</a>
+        <a href="#projects">프로젝트</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section id="about" class="intro" aria-labelledby="about-title">
+      <h1 id="about-title">안녕하세요.<br>권서연입니다.</h1>
+      <p class="affiliation">🎓 한국외국어대학교 · Social Science &amp; AI 융합학부</p>
+      <p class="intro-summary">저는 넘어져도 다시 도전해서 결과를 만들어내는 사람입니다.</p>
+      <p class="intro-text">재수를 거치며 노력이 결과로 이어지는 경험을 했고, 그 힘으로 한국외국어대학교 Social Science &amp; AI 융합학부에 진학했습니다. 대학에서는 밴드부 활동과 새로운 취미에 도전하며 시야를 넓혔고, 꾸준히 관심 있던 일본어를 공부해 학기마다 자격증을 하나씩 취득했습니다. 지금은 파이썬의 매력에 빠져 데이터와 프로그래밍 공부에 열중하며, 저만의 새로운 궤도를 차근차근 그려나가고 있습니다.</p>
+      <a class="button" href="#projects">프로젝트 보기 <span aria-hidden="true">→</span></a>
+    </section>
+
+    <section id="interests" class="section" aria-labelledby="interests-title">
+      <h2 id="interests-title">관심 분야</h2>
+      <p class="section-description">꾸준히 시간과 마음을 쏟고 있는 것들입니다.</p>
+      <ul class="interest-list">
+        <li><span aria-hidden="true">🐍</span> Python (배우는 중)</li>
+        <li><span aria-hidden="true">🎌</span> 일본어 (JLPT N4·N3 취득)</li>
+        <li><span aria-hidden="true">🎸</span> 밴드 활동 · 베이스</li>
+        <li><span aria-hidden="true">🧶</span> 뜨개질</li>
+        <li><span aria-hidden="true">🎬</span> 애니메이션 감상</li>
+      </ul>
+    </section>
+
+    <section id="activities" class="section" aria-labelledby="activities-title">
+      <h2 id="activities-title">활동</h2>
+      <p class="section-description">도전하고 극복하며 쌓아온 경험들입니다.</p>
+      <ul class="activity-list">
+        <li>
+          <h3>재수를 통한 대학 합격</h3>
+          <p>1년간 꾸준히 준비해 원하던 대학의 인문논술 전형에 합격했습니다.</p>
+        </li>
+        <li>
+          <h3>재수강 전 과목 A 달성</h3>
+          <p>학업에 소홀해졌던 시기를 지나 재수강한 과목에서 모두 A를 받으며 다시 궤도에 올랐습니다.</p>
+        </li>
+        <li>
+          <h3>대외활동 4관왕 달성 및 참여</h3>
+          <p>방학 동안 지원한 대외활동 네 곳(오리온 소비자 패널, 시나공 서포터즈 20기, 코알디 3기, Do it! 기초 언어 스터디)에 모두 합격했습니다. 이 중 세 곳에 열정적으로 참여하며 다양한 경험을 쌓았습니다.</p>
+        </li>
+        <li>
+          <h3>비교과 프로그램 참여</h3>
+          <p>대학생 시간관리 특강, 기업 방문 등 여러 비교과 프로그램에 참여하며 자기계발을 이어갔습니다.</p>
+        </li>
+        <li>
+          <h3>일본언어문화 이중전공 도전</h3>
+          <p>학업과 다양한 활동 사이에서 균형을 찾아가던 중, 가장 꾸준히 관심을 가져온 일본어를 더 깊이 공부하기로 결심했습니다. 이중전공으로 선택해 차근차근 준비하고 있습니다.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <h2 id="projects-title">프로젝트</h2>
+      <article class="project-card">
+        <span class="status">진행 중</span>
+        <h3>공통 기초과제 · 개인 홈페이지</h3>
+        <p>자기소개, 관심 분야, GitHub와 작업 링크를 담은 공개 포트폴리오를 만들고 있습니다. 학기 말까지 프로젝트와 회고를 연결할 계획입니다.</p>
+      </article>
+      <article class="project-card">
+        <span class="status">진행 중</span>
+        <h3>개인 본 프로젝트 · 작동하는 서비스</h3>
+        <p>실제 사용자를 정하고 핵심 흐름을 구현하여 테스트와 사용자 피드백으로 개선해 나가는 프로젝트입니다. 8주차 중간 MVP를 거쳐 15주차에 최종 완성하는 것이 목표입니다.</p>
+      </article>
+      <article class="project-card">
+        <span class="status">완료</span>
+        <h3>머니나침반 v2 · AI 맞춤형 재테크 코치</h3>
+        <p>소득·지출·저축·투자·부채와 재무 목표를 입력하면 재무 상태를 분석하고 재테크 방향을 제안하는 Streamlit 웹서비스입니다. 재테크 유형 진단, 재무 스트레스 점수, 목표 달성 기간 분석, AI 코칭 모드를 담았습니다.</p>
+        <a class="project-link" href="https://github.com/zzrlella/money-compass-streamlit">GitHub에서 보기 <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="project-card">
+        <span class="status">완료</span>
+        <h3>온솔 학부모 민원 중재 시스템</h3>
+        <p>학부모·교사·관리자 역할별로 로그인해 민원을 접수하고, 단순 문의부터 상담·긴급·악성 민원까지 유형을 분류해 중재를 돕는 학교 행정용 Streamlit 웹앱입니다.</p>
+        <a class="project-link" href="https://github.com/zzrlella/onsol-parent-complaint-system">GitHub에서 보기 <span aria-hidden="true">→</span></a>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <p>나의 학습과 프로젝트를 기록합니다.</p>
+    <a href="https://github.com/">GitHub 홈페이지</a>
+  </footer>
+</body>
+</html>
