@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[후보 H · DevLog] 권서연 커밋로그</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2128;
+    --line: #30363d;
+    --text: #c9d1d9;
+    --muted: #8b949e;
+    --accent: #e2703a;
+    --green: #3fb950;
+    --yellow: #d29922;
+    --blue: #58a6ff;
+    --purple: #bc8cff;
+    --mono: "JetBrains Mono", monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: "Pretendard Variable", "Apple SD Gothic Neo", sans-serif;
+    line-height: 1.7; font-size: 15.5px; padding-bottom: 40px;
+  }
+  .mono { font-family: var(--mono); }
+  code, .mono-label { font-family: var(--mono); }
+
+  .preview-banner { text-align: center; padding: 9px; background: var(--accent); color: #1a0f08; font-size: 13px; font-weight: 700; }
+
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+  /* window chrome */
+  .winbar {
+    position: sticky; top: 0; z-index: 60; background: var(--surface2);
+    border-bottom: 1px solid var(--line);
+  }
+  .winbar-top { display: flex; align-items: center; gap: 10px; padding: 10px 16px; }
+  .dots { display: flex; gap: 7px; }
+  .dot { width: 11px; height: 11px; border-radius: 50%; }
+  .dot.r { background: #ff5f57; } .dot.y { background: #febc2e; } .dot.g { background: #28c840; }
+  .win-title { font-family: var(--mono); font-size: 12.5px; color: var(--muted); margin-left: 6px; }
+  .tabs { display: flex; overflow-x: auto; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    font-family: var(--mono); font-size: 12.5px; color: var(--muted); text-decoration: none;
+    padding: 10px 16px; border-right: 1px solid var(--line); white-space: nowrap; border-bottom: 2px solid transparent;
+  }
+  .tab:hover { color: var(--text); background: var(--surface); }
+  .tab.active { color: var(--text); background: var(--bg); border-bottom-color: var(--accent); }
+
+  section { padding: 48px 0; border-bottom: 1px dashed var(--line); scroll-margin-top: 90px; }
+  #knitting.knit-reveal { display: none; }
+  #knitting.knit-reveal:target { display: block; }
+
+  /* hero / readme */
+  .readme { padding-top: 40px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 5px; font-family: var(--mono); font-size: 11.5px; font-weight: 700;
+    padding: 3px 9px; border-radius: 3px; border: 1px solid var(--line); background: var(--surface); color: var(--muted);
+  }
+  .badge.wip { color: #1a0f08; background: var(--yellow); border-color: var(--yellow); }
+  .badge.pass { color: #04150a; background: var(--green); border-color: var(--green); }
+  .badge.accent { color: #1a0f08; background: var(--accent); border-color: var(--accent); }
+  h1.headline { font-size: 32px; line-height: 1.45; font-weight: 700; margin: 0 0 20px; color: #fff; }
+  h1.headline .hash { color: var(--muted); font-family: var(--mono); font-weight: 400; margin-right: 8px; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 8px 10px; margin-bottom: 24px; }
+  .meta-tag { font-family: var(--mono); font-size: 12px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 4px; color: var(--muted); }
+  .comment { font-family: var(--mono); color: #6e7681; font-size: 13.5px; margin-bottom: 8px; }
+  .desc { max-width: 640px; color: var(--muted); font-size: 15px; margin: 0 0 30px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; font-family: var(--mono);
+    background: var(--accent); color: #1a0f08; text-decoration: none; font-weight: 700; font-size: 13.5px;
+    border-radius: 6px;
+  }
+  .btn:hover { background: #ff8a52; }
+
+  .section-label { font-family: var(--mono); font-size: 12.5px; color: var(--muted); margin-bottom: 10px; }
+  .section-label .lb { color: var(--purple); } .section-label .fn { color: var(--blue); }
+  h2 { font-size: 20px; font-weight: 700; margin: 0 0 24px; color: #fff; }
+
+  /* interests as JSON */
+  .code-block {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+  }
+  .code-block .cb-head {
+    display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-bottom: 1px solid var(--line);
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
+  }
+  .code-block pre { margin: 0; padding: 18px 20px; overflow-x: auto; font-family: var(--mono); font-size: 13.5px; line-height: 1.8; }
+  .k { color: var(--blue); } .s { color: #a5d6ff; } .p { color: var(--muted); } .c { color: #6e7681; font-style: italic; }
+  .note-line { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 12px; }
+  .field-link { font-family: var(--mono); font-size: 13px; color: var(--accent); text-decoration: none; }
+
+  /* activities as git log */
+  .gitlog { border-left: 2px solid var(--line); padding-left: 0; }
+  .commit { position: relative; padding: 20px 0 20px 28px; border-bottom: 1px solid var(--line); }
+  .commit:first-child { padding-top: 0; }
+  .commit::before {
+    content: ""; position: absolute; left: -6.5px; top: 24px; width: 11px; height: 11px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--accent);
+  }
+  .commit-hash { font-family: var(--mono); font-size: 12px; color: var(--yellow); margin-right: 10px; }
+  .commit-date { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .commit-msg { font-size: 16px; font-weight: 700; margin: 8px 0 6px; color: #fff; }
+  .commit-body { color: var(--muted); font-size: 14.5px; }
+  .commit-body a { color: var(--accent); font-family: var(--mono); font-size: 13px; }
+
+  /* goals as TODO */
+  .todo-group { margin-bottom: 26px; }
+  .todo-group h3 { font-family: var(--mono); font-size: 13px; color: var(--muted); margin: 0 0 12px; text-transform: uppercase; letter-spacing: 1px; }
+  .todo-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 14.5px; }
+  .todo-box { width: 16px; height: 16px; border: 1.5px solid var(--muted); border-radius: 3px; flex-shrink: 0; }
+
+  /* projects as repo cards */
+  .repo-card { border: 1px solid var(--line); border-radius: 8px; padding: 18px 20px; margin-bottom: 14px; background: var(--surface); }
+  .repo-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+  .repo-name { font-family: var(--mono); font-weight: 700; color: var(--blue); font-size: 15.5px; }
+  .repo-vis { font-size: 11px; font-family: var(--mono); padding: 1px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }
+  .repo-card p { color: var(--muted); font-size: 14px; margin: 0 0 10px; }
+  .repo-foot { display: flex; gap: 16px; font-family: var(--mono); font-size: 12.5px; color: var(--muted); align-items: center; }
+  .repo-foot a { color: var(--accent); text-decoration: none; }
+  .lang-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 5px; }
+
+  .gal-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; }
+  .gal-grid a { display: block; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--surface); }
+  .gal-grid img { width: 100%; height: 110px; object-fit: cover; display: block; opacity: .85; transition: opacity .15s; cursor: pointer; }
+  .gal-grid img:hover { opacity: 1; }
+
+  .lightbox { display:none; position:fixed; inset:0; z-index:200; background:rgba(1,4,9,.92); align-items:center; justify-content:center; padding:30px; }
+  .lightbox:target { display:flex; }
+  .lightbox img { max-width:min(700px,100%); max-height:82vh; border-radius:8px; border: 1px solid var(--line); }
+  .lightbox-close { position:fixed; top:22px; right:26px; width:40px; height:40px; border-radius:6px; background:var(--surface); border: 1px solid var(--line); display:flex; align-items:center; justify-content:center; font-weight:700; text-decoration:none; color:var(--text); font-family: var(--mono); }
+
+  .statusbar {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 60;
+    background: var(--accent); color: #1a0f08; font-family: var(--mono); font-size: 12px;
+    display: flex; align-items: center; justify-content: space-between; padding: 5px 16px;
+  }
+  .statusbar .left, .statusbar .right { display: flex; gap: 16px; align-items: center; }
+
+  footer.foot { text-align:left; padding: 30px 0 60px; font-size: 13px; color: var(--muted); font-family: var(--mono); }
+  footer.foot a { color: var(--accent); text-decoration:none; }
+
+  @media (max-width: 800px) {
+    .gal-grid { grid-template-columns: repeat(2,1fr); }
+    h1.headline { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="preview-banner">◆ 이건 후보 H · DevLog 컨셉입니다 — GitHub에는 반영되지 않았어요.</div>
+
+<div class="winbar">
+  <div class="winbar-top">
+    <div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
+    <span class="win-title">portfolio.py — 권서연 커밋로그</span>
+  </div>
+  <div class="tabs">
+    <a class="tab active" href="#about">about.md</a>
+    <a class="tab" href="#interests">interests.py</a>
+    <a class="tab" href="#activities">activities.log</a>
+    <a class="tab" href="#goals">goals.todo</a>
+    <a class="tab" href="#projects">projects/</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="about" class="readme">
+    <div class="badges">
+      <span class="badge wip"><i data-lucide="loader" style="width:11px;height:11px;"></i> WIP</span>
+      <span class="badge pass"><i data-lucide="check-circle-2" style="width:11px;height:11px;"></i> build passing</span>
+      <span class="badge accent">v0.4.2-dev</span>
+      <span class="badge">⎇ main</span>
+    </div>
+    <div class="comment">// README.md</div>
+    <h1 class="headline">사회현상을 데이터로 읽고, AI로 풀어내는 사람이 되는 중입니다.</h1>
+    <div class="meta-row">
+      <span class="meta-tag">🎓 한국외국어대학교</span>
+      <span class="meta-tag">Social Science &amp; AI 융합학부</span>
+      <span class="meta-tag">일본언어문화학과(이중전공)</span>
+    </div>
+    <p class="desc">완성된 결과물이 아니라, 지금도 계속 커밋되고 있는 버전입니다. 재수, 재수강처럼 부족한 시작들이 있었지만 얼마든지 다시 일어나고 부딪혀 나아갑니다. 지금은 파이썬의 매력에 빠져 데이터와 프로그래밍 공부에 열중하며, 완벽하지 않아도 계속 움직이고 있는 이 과정 자체를 보여드리려 합니다.</p>
+    <a class="btn" href="#projects">&gt;&gt;&gt; import projects</a>
+  </section>
+
+  <section id="interests">
+    <div class="section-label"><span class="lb">&gt;&gt;&gt;</span> <span class="fn">interests</span> = <span class="p">{...}</span></div>
+    <h2>관심 분야</h2>
+    <div class="code-block">
+      <div class="cb-head"><i data-lucide="file-code-2" style="width:13px;height:13px;"></i> interests.py</div>
+      <pre><span class="k">interests</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="s">"languages"</span><span class="p">:</span> <span class="p">[</span><span class="s">"일본어 (JLPT N3, N4 취득)"</span><span class="p">],</span>
+    <span class="s">"tech"</span><span class="p">:</span> <span class="p">{</span><span class="s">"learning"</span><span class="p">:</span> <span class="s">"Python"</span><span class="p">},</span>  <span class="c"># VS Code · Jupyter로 기초를 다지는 중</span>
+    <span class="s">"hobbies"</span><span class="p">:</span> <span class="p">[</span><span class="s">"애니메이션 감상"</span><span class="p">,</span> <span class="s">"베이스"</span><span class="p">,</span> <span class="s">"뜨개질"</span><span class="p">]</span>
+<span class="p">}</span></pre>
+    </div>
+    <p class="note-line"><a class="field-link" href="#knitting">&gt;&gt;&gt; os.listdir("assets/knitting")</a></p>
+  </section>
+
+  <section id="knitting" class="knit-reveal">
+    <a class="lightbox-close" style="position:static; display:inline-flex; margin-bottom:16px;" href="#interests"># ← back</a>
+    <div class="section-label"><span class="lb">&gt;&gt;&gt;</span> <span class="fn">os.listdir</span>("assets/knitting")</div>
+    <h2>뜨개작품</h2>
+    <p class="desc" style="margin-bottom:20px;">사진을 클릭하면 크게 볼 수 있어요.</p>
+    <div class="gal-grid">
+      <a href="#k1"><img src="images/knit-01.png" alt="뜨개작품 1"></a>
+      <a href="#k2"><img src="images/knit-02.png" alt="뜨개작품 2"></a>
+      <a href="#k3"><img src="images/knit-03.png" alt="뜨개작품 3"></a>
+      <a href="#k4"><img src="images/knit-04.png" alt="뜨개작품 4"></a>
+      <a href="#k5"><img src="images/knit-05.png" alt="뜨개작품 5"></a>
+      <a href="#k6"><img src="images/knit-06.png" alt="뜨개작품 6"></a>
+      <a href="#k7"><img src="images/knit-07.png" alt="뜨개작품 7"></a>
+      <a href="#k8"><img src="images/knit-08.png" alt="뜨개작품 8"></a>
+      <a href="#k9"><img src="images/knit-09.png" alt="뜨개작품 9"></a>
+      <a href="#k10"><img src="images/knit-10.png" alt="뜨개작품 10"></a>
+    </div>
+  </section>
+
+  <section id="activities">
+    <div class="section-label"><span class="lb">&gt;&gt;&gt;</span> <span class="fn">activities</span>.log()</div>
+    <h2>활동</h2>
+    <div class="gitlog">
+      <div class="commit">
+        <span class="commit-hash">#a3f1c9</span><span class="commit-date">2025-03 · 입학</span>
+        <div class="commit-msg">feat: 재수를 통한 대학 합격</div>
+        <div class="commit-body">1년간 꾸준히 준비해 원하던 대학의 인문논술 전형에 합격했습니다.</div>
+      </div>
+      <div class="commit">
+        <span class="commit-hash">#8b02de</span><span class="commit-date">2025-11 · 2학기 말</span>
+        <div class="commit-msg">chore: 비교과 프로그램 참여</div>
+        <div class="commit-body">1학년 성적이 부진해 초조했던 시기, SD바이오센서 기업탐방·대학생 시간관리 프로그램·교내 진로상담 등 할 수 있는 것들을 찾아 참여하며 방향을 다시 잡아갔습니다.</div>
+      </div>
+      <div class="commit">
+        <span class="commit-hash">#f47a01</span><span class="commit-date">2025-12 · 겨울</span>
+        <div class="commit-msg">feat: 대외활동 4관왕 달성 및 참여</div>
+        <div class="commit-body">같은 위기감 속에서 지원한 대외활동 네 곳(오리온 소비자 패널, 시나공 서포터즈 20기, 코알디 3기, Do it! 기초 언어 스터디)에 모두 합격했습니다. 이 중 세 곳에 열정적으로 참여하며 다양한 경험을 쌓았습니다.<br><a href="https://www.instagram.com/um._.ggae/">→ instagram.com/um._.ggae</a></div>
+      </div>
+      <div class="commit">
+        <span class="commit-hash">#c19e77</span><span class="commit-date">2026-02</span>
+        <div class="commit-msg">fix: 재수강 전 과목 A 달성</div>
+        <div class="commit-body">학업에 소홀해졌던 시기를 지나 재수강한 과목에서 모두 A를 받으며 다시 궤도에 올랐습니다.</div>
+      </div>
+      <div class="commit" style="border-bottom:none;">
+        <span class="commit-hash">#0d5f3a</span><span class="commit-date">2026-03 · 1학기</span>
+        <div class="commit-msg">feat: 일본언어문화 이중전공 도전</div>
+        <div class="commit-body">학업과 다양한 활동 사이에서 균형을 찾아가던 중, 가장 꾸준히 관심을 가져온 일본어를 더 깊이 공부하기로 결심했습니다. 이중전공으로 선택해 차근차근 준비하고 있습니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="goals">
+    <div class="section-label"><span class="lb">#</span> <span class="fn">TODO</span></div>
+    <h2>목표</h2>
+    <div class="todo-group">
+      <h3>자격증</h3>
+      <div class="todo-item"><span class="todo-box"></span> ADsP</div>
+      <div class="todo-item"><span class="todo-box"></span> SQLD</div>
+      <div class="todo-item"><span class="todo-box"></span> 컴퓨터활용능력</div>
+      <div class="todo-item"><span class="todo-box"></span> 토익</div>
+      <div class="todo-item"><span class="todo-box"></span> JLPT N1</div>
+    </div>
+    <div class="todo-group">
+      <h3>경험</h3>
+      <div class="todo-item"><span class="todo-box"></span> 인턴십</div>
+      <div class="todo-item"><span class="todo-box"></span> 일본 교환학생 혹은 한 달 해외살이</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-label"><span class="lb">&gt;&gt;&gt;</span> <span class="fn">os.listdir</span>("projects")</div>
+    <h2>프로젝트</h2>
+
+    <div class="repo-card">
+      <div class="repo-head"><span class="repo-name">공통-기초과제-개인홈페이지</span><span class="repo-vis">private → public</span></div>
+      <p>자기소개, 관심 분야, GitHub와 작업 링크를 담은 공개 포트폴리오를 만들고 있습니다. 학기 말까지 프로젝트와 회고를 연결할 계획입니다.</p>
+      <div class="repo-foot"><span><i data-lucide="circle-dot" style="width:12px;height:12px; color:var(--yellow);"></i> in progress</span></div>
+    </div>
+
+    <div class="repo-card">
+      <div class="repo-head"><span class="repo-name">개인-본프로젝트</span><span class="repo-vis">public</span></div>
+      <p>실제 사용자를 정하고 핵심 흐름을 구현하여 테스트와 사용자 피드백으로 개선해 나가는 프로젝트입니다. 8주차 중간 MVP를 거쳐 15주차에 최종 완성하는 것이 목표입니다.</p>
+      <div class="repo-foot"><span><i data-lucide="circle-dot" style="width:12px;height:12px; color:var(--yellow);"></i> in progress</span></div>
+    </div>
+
+    <div class="repo-card">
+      <div class="repo-head"><span class="repo-name">money-compass-streamlit</span><span class="repo-vis">public</span></div>
+      <p>삼성전자·SK하이닉스 주가가 폭등하며 또래들 사이에서 "나도 재테크 해볼까?"라는 고민이 커지던 시기에 만들었습니다. 사실 저부터도 그 답이 필요했어요. 소득·지출·투자 성향·재무 목표를 입력하면 나에게 맞는 자산관리 방향을 짚어주는, 제 자신을 위한 비서로 시작한 Streamlit 웹서비스입니다.</p>
+      <div class="repo-foot">
+        <span><span class="lang-dot" style="background:#3572A5;"></span>Python</span>
+        <span><i data-lucide="check-circle-2" style="width:12px;height:12px; color:var(--green);"></i> shipped</span>
+        <a href="https://github.com/umggae/money-compass-streamlit">→ github.com/umggae/money-compass-streamlit</a>
+      </div>
+    </div>
+
+    <div class="repo-card">
+      <div class="repo-head"><span class="repo-name">onsol-parent-complaint-system</span><span class="repo-vis">public</span></div>
+      <p>웹툰 &lt;참교육&gt;이 드라마화되며 교권 문제를 다시 들여다보게 됐습니다. 심각한 사회문제라고 느꼈고, AI가 이 문제를 조금이라도 풀어낼 수 있지 않을까 하는 질문에서 시작했습니다. 학부모·교사·관리자 역할별로 로그인해 민원을 접수하고, 단순 문의부터 상담·긴급·악성 민원까지 유형을 분류해 중재를 돕는 학교 행정용 Streamlit 웹앱입니다.</p>
+      <div class="repo-foot">
+        <span><span class="lang-dot" style="background:#3572A5;"></span>Python</span>
+        <span><i data-lucide="check-circle-2" style="width:12px;height:12px; color:var(--green);"></i> shipped</span>
+        <a href="https://github.com/umggae/onsol-parent-complaint-system">→ github.com/umggae/onsol-parent-complaint-system</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">// 나의 학습과 프로젝트를 기록합니다 · <a href="https://github.com/umggae">github.com/umggae</a></footer>
+</div>
+
+<div id="k1" class="lightbox"><a class="lightbox-close" href="#knitting">esc</a><img src="images/knit-01.png"></div>
+<div id="k2" class="lightbox"><a class="lightbox-close" href="#knitting">esc</a><img src="images/knit-02.png"></div>
+<div id="k3" class="lightbox"><a class="lightbox-close" href="#knitting">esc</a><img src="images/knit-03.png"></div>
+<div id="k4" class="lightbox"><a class="lightbox-close" href="#knitting">esc</a><img src="images/knit-04.png"></div>
+<div id="k5" class="lightbox"><a class="lightbox-close" href="#knitting">esc</a><img src="images/knit-05.png"></div>
+<div id="k6" class="lightbox"><a class="lightbox-close" href="#knitting">esc</a><img src="images/knit-06.png"></div>
+<div id="k7" class="lightbox"><a class="lightbox-close" href="#knitting">esc</a><img src="images/knit-07.png"></div>
+<div id="k8" class="lightbox"><a class="lightbox-close" href="#knitting">esc</a><img src="images/knit-08.png"></div>
+<div id="k9" class="lightbox"><a class="lightbox-close" href="#knitting">esc</a><img src="images/knit-09.png"></div>
+<div id="k10" class="lightbox"><a class="lightbox-close" href="#knitting">esc</a><img src="images/knit-10.png"></div>
+
+<div class="statusbar">
+  <div class="left">
+    <span>⎇ main</span>
+    <span>✓ 0 problems</span>
+  </div>
+  <div class="right">
+    <span>UTF-8</span>
+    <span>committed by 권서연</span>
+  </div>
+</div>
+
+<script>document.addEventListener('DOMContentLoaded', () => lucide.createIcons());</script>
+</body>
+</html>
