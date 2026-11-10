@@ -12,6 +12,22 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
   <link rel="stylesheet" href="style.css">
+<style>
+  h2 .sub { font-family: var(--mono); font-size: 12.5px; font-weight: 400; color: var(--comment); margin-left: 8px; }
+  .letter { margin: 0 0 14px; max-width: 620px; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; }
+  .kpi-value { font-family: var(--mono); font-size: 28px; font-weight: 700; color: var(--accent); line-height: 1.2; }
+  .kpi-label { margin-top: 6px; font-weight: 700; color: var(--heading); font-size: 15px; }
+  .kpi-note { margin-top: 4px; color: var(--muted); font-size: 13.5px; }
+  .risk { border-left: 3px solid var(--yellow); padding: 4px 0 4px 16px; margin-bottom: 20px; }
+  .risk.dividend { border-left-color: var(--green); }
+  .risk-title { font-weight: 700; color: var(--heading); margin-bottom: 2px; }
+  .risk p { margin: 0; color: var(--muted); font-size: 15px; }
+  .resp { font-family: var(--mono); font-size: 13px; color: var(--accent); font-weight: 700; }
+  @media (max-width: 800px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 440px) { .kpi-value { font-size: 22px; } .kpi { padding: 14px; } }
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">본문 바로가기</a>
@@ -19,14 +35,16 @@
   <div class="winbar">
     <div class="winbar-top">
       <div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
-      <a class="win-title" href="#about">portfolio.py — 권서연 커밋로그</a>
+      <a class="win-title" href="#about">annual_report.py — 권서연 커밋로그</a>
     </div>
     <nav class="tabs" aria-label="주요 메뉴">
-      <a class="tab" href="#about">about.md</a>
-      <a class="tab" href="#interests">interests.py</a>
-      <a class="tab" href="#activities">activities.log</a>
-      <a class="tab" href="#goals">goals.todo</a>
+      <a class="tab" href="#about">letter.md</a>
+      <a class="tab" href="#highlights">highlights.py</a>
+      <a class="tab" href="#interests">business.py</a>
+      <a class="tab" href="#activities">earnings.log</a>
+      <a class="tab" href="#goals">guidance.todo</a>
       <a class="tab" href="#projects">projects/</a>
+      <a class="tab" href="#risks">risks.md</a>
     </nav>
   </div>
 
@@ -36,23 +54,40 @@
         <div class="badges">
           <span class="badge wip"><i data-lucide="loader" style="width:11px;height:11px;"></i> WIP</span>
           <span class="badge pass"><i data-lucide="check-circle-2" style="width:11px;height:11px;"></i> build passing</span>
-          <span class="badge accent">v0.4.2-dev</span>
+          <span class="badge accent">FY2026 주주 보고</span>
           <span class="badge">⎇ main</span>
         </div>
-        <div class="comment">// README.md</div>
+        <div class="comment">// letter.md — 주주서한</div>
         <h1 id="about-title" class="headline">사회현상을 데이터로 읽고, AI로 풀어내는 사람이 되는 중입니다.</h1>
+        <p class="audience"><span class="audience-label">for</span> 미래의 나와 최대주주(부모님)께</p>
         <div class="meta-row">
           <span class="meta-tag">🎓 한국외국어대학교</span>
           <span class="meta-tag">Social Science &amp; AI 융합학부</span>
           <span class="meta-tag">일본언어문화학과(이중전공)</span>
         </div>
-        <p class="desc">계속 커밋 중입니다. 재수, 재수강처럼 부족한 시작들이 있었지만 얼마든지 다시 일어나고 부딪혀 나아갑니다. 지금은 파이썬의 매력에 빠져 데이터와 프로그래밍 공부에 열중하며, 완벽하지 않아도 계속 움직이고 있는 이 과정 자체를 보여드리려 합니다.</p>
-        <a class="btn" href="#projects">&gt;&gt;&gt; import projects</a>
+        <p class="desc letter">존경하는 최대주주님께,</p>
+        <p class="desc letter">계속 커밋 중입니다. 재수, 재수강처럼 부족한 시작들이 있었지만 얼마든지 다시 일어나고 부딪혀 나아갑니다. 지금은 파이썬의 매력에 빠져 데이터와 프로그래밍 공부에 열중하며, 완벽하지 않아도 계속 움직이고 있는 이 과정 자체를 보여드리려 합니다.</p>
+        <p class="desc letter">— 권서연 드림</p>
+        <a class="btn" href="#highlights">&gt;&gt;&gt; import highlights</a>
+      </section>
+
+      <section id="highlights" aria-labelledby="highlights-title">
+        <div class="section-label"><span class="lb">&gt;&gt;&gt;</span> <span class="fn">highlights</span>.summary()</div>
+        <h2 id="highlights-title">핵심 지표 <small class="sub">Highlights</small></h2>
+        <div class="kpi-grid">
+          <div class="kpi"><div class="kpi-value">4 / 4</div><div class="kpi-label">대외활동 합격</div><div class="kpi-note">지원한 4곳 모두 합격, 3곳에 참여</div></div>
+          <div class="kpi"><div class="kpi-value">A</div><div class="kpi-label">재수강 과목 성적</div><div class="kpi-note">재수강한 전 과목에서 A</div></div>
+          <div class="kpi"><div class="kpi-value">4</div><div class="kpi-label">완료 프로젝트</div><div class="kpi-note">머니나침반 v2, 온솔, 잇다, 외대 맛집</div></div>
+          <div class="kpi"><div class="kpi-value">2</div><div class="kpi-label">진행 중 프로젝트</div><div class="kpi-note">개인 홈페이지, 개인 본 프로젝트</div></div>
+          <div class="kpi"><div class="kpi-value">N3 · N4</div><div class="kpi-label">JLPT 취득</div><div class="kpi-note">일본어 능력시험</div></div>
+          <div class="kpi"><div class="kpi-value">10</div><div class="kpi-label">뜨개 작품</div><div class="kpi-note">기타 사업(취미) 부문 결과물</div></div>
+        </div>
+        <p class="note-line"># 위 수치는 이 페이지의 활동·프로젝트 기록에 근거합니다.</p>
       </section>
 
       <section id="interests" aria-labelledby="interests-title">
         <div class="section-label"><span class="lb">&gt;&gt;&gt;</span> <span class="fn">interests</span> = <span class="p">{...}</span></div>
-        <h2 id="interests-title">관심 분야</h2>
+        <h2 id="interests-title">사업 영역 <small class="sub">관심 분야</small></h2>
         <div class="code-block">
           <div class="cb-head"><i data-lucide="file-code-2" style="width:13px;height:13px;"></i> interests.py</div>
           <pre><span class="k">interests</span> <span class="p">=</span> <span class="p">{</span>
@@ -84,8 +119,8 @@
       </section>
 
       <section id="activities" aria-labelledby="activities-title">
-        <div class="section-label"><span class="lb">&gt;&gt;&gt;</span> <span class="fn">activities</span>.log()</div>
-        <h2 id="activities-title">활동</h2>
+        <div class="section-label"><span class="lb">&gt;&gt;&gt;</span> <span class="fn">earnings</span>.log()</div>
+        <h2 id="activities-title">분기별 실적 <small class="sub">활동</small></h2>
         <div class="gitlog">
           <div class="commit">
             <span class="commit-hash">#a3f1c9</span><span class="commit-date">2025-03 · 입학</span>
@@ -116,8 +151,8 @@
       </section>
 
       <section id="goals" aria-labelledby="goals-title">
-        <div class="section-label"><span class="lb">#</span> <span class="fn">TODO</span></div>
-        <h2 id="goals-title">목표</h2>
+        <div class="section-label"><span class="lb">#</span> <span class="fn">GUIDANCE</span></div>
+        <h2 id="goals-title">향후 계획 <small class="sub">목표</small></h2>
         <div class="todo-group">
           <h3>자격증</h3>
           <div class="todo-item"><span class="todo-box"></span> ADsP</div>
@@ -131,11 +166,21 @@
           <div class="todo-item"><span class="todo-box"></span> 인턴십</div>
           <div class="todo-item"><span class="todo-box"></span> 일본 교환학생 혹은 한 달 해외살이</div>
         </div>
+        <div class="todo-group">
+          <h3>진행 중인 지원</h3>
+          <div class="todo-item top">
+            <span class="todo-box"></span>
+            <div>
+              LG와 함께하는 사랑의 다문화 학교 · 일본어 초등 멘토 <span class="status-pill">지원 완료 · 결과 대기</span>
+              <div class="todo-sub">다문화 가정 학생들에게 다양한 언어교육을 해주는 프로그램입니다. 10/28 지원 → 서류 발표 11/23 → 면접 12/1~12/4 → 최종 발표 12/21</div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section id="projects" aria-labelledby="projects-title">
         <div class="section-label"><span class="lb">&gt;&gt;&gt;</span> <span class="fn">os.listdir</span>("projects")</div>
-        <h2 id="projects-title">프로젝트</h2>
+        <h2 id="projects-title">사업 부문 <small class="sub">프로젝트</small></h2>
 
         <div class="repo-card">
           <div class="repo-head"><span class="repo-name">공통-기초과제-개인홈페이지</span><span class="repo-vis">private → public</span></div>
@@ -168,10 +213,53 @@
             <a href="https://github.com/umggae/onsol-parent-complaint-system">→ github.com/umggae/onsol-parent-complaint-system</a>
           </div>
         </div>
+
+        <div class="repo-card">
+          <div class="repo-head"><span class="repo-name">itda (잇다)</span><span class="repo-vis">public</span></div>
+          <p>네이버·카카오 지도는 대중교통일 때 경유지를 지원하지 않아서, 하루에 여러 곳을 들르는 일정은 구간마다 출발지와 도착지를 바꿔 가며 확인해야 했습니다. 잇다는 서울에서 하루 일정을 대중교통으로 짜는 여행객을 위해, 일정을 입력하면 구간별 이동시간과 가능 여부를 검사하고 더 효율적인 방문 순서를 제안합니다. 직접 사용해 보며 확인한 결과를 화면 캡처로 남기고, 단위 테스트 77개로도 검증했습니다.</p>
+          <div class="repo-foot">
+            <span><span class="lang-dot" style="background:#f1e05a;"></span>JavaScript</span>
+            <span><i data-lucide="check-circle-2" style="width:12px;height:12px; color:var(--green);"></i> shipped</span>
+            <a href="https://itda-rho.vercel.app/">→ itda-rho.vercel.app</a>
+            <a href="https://github.com/umggae/itda">→ github.com/umggae/itda</a>
+          </div>
+        </div>
+
+        <div class="repo-card">
+          <div class="repo-head"><span class="repo-name">daily-menu-project (오늘의 외대 맛집)</span><span class="repo-vis">public</span></div>
+          <p>한식·중식·일식·양식 중 하나를 고르면 오늘 갈 맛집을 원형 룰렛으로 뽑아 주는 서비스입니다. GitHub Actions가 매일 Python을 실행해 점심·저녁 메뉴를 새로 만들고 GitHub Pages로 배포하며, 정문·후문·회기 지역 필터와 지도 바로가기를 넣었습니다. 수업 실습으로 만들었고, 장소 데이터는 외대 맛집 지도(이탈리아어과 정서연 제작)에서 가게 이름과 대표 메뉴만 가져와 정리했습니다.</p>
+          <div class="repo-foot">
+            <span><span class="lang-dot" style="background:#3572A5;"></span>Python</span>
+            <span><i data-lucide="check-circle-2" style="width:12px;height:12px; color:var(--green);"></i> shipped</span>
+            <a href="https://umggae.github.io/daily-menu-project/">→ umggae.github.io/daily-menu-project</a>
+            <a href="https://github.com/umggae/daily-menu-project">→ github.com/umggae/daily-menu-project</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="risks" aria-labelledby="risks-title">
+        <div class="section-label"><span class="lb">#</span> <span class="fn">RISK FACTORS</span></div>
+        <h2 id="risks-title">리스크 요인 <small class="sub">그리고 대응</small></h2>
+        <div class="risk">
+          <div class="risk-title">학업 성과의 변동성</div>
+          <p>1학년 때 성적이 부진했던 이력이 있습니다. <span class="resp">대응:</span> 재수강으로 전 과목 A를 회복했고, 시간관리 프로그램과 진로상담에 참여했습니다.</p>
+        </div>
+        <div class="risk">
+          <div class="risk-title">외부에서 검증된 성과 부족</div>
+          <p>인턴·수상처럼 제3자가 확인해 준 성과는 아직 없습니다. <span class="resp">대응:</span> 자격증과 인턴십을 목표로 두고 단계적으로 쌓아 가겠습니다.</p>
+        </div>
+        <div class="risk">
+          <div class="risk-title">여러 일을 동시에 하는 데서 오는 시간 분산</div>
+          <p>이중전공, 자격증, 프로젝트, 대외활동을 병행합니다. <span class="resp">대응:</span> 한 번에 하나씩 끝까지 커밋하는 방식으로 우선순위를 관리합니다.</p>
+        </div>
+        <div class="risk dividend">
+          <div class="risk-title">주주 환원</div>
+          <p>결과물이 하나 완성될 때마다 가장 먼저 최대주주님께 보고드리겠습니다.</p>
+        </div>
       </section>
     </main>
 
-    <footer class="foot">// 나의 학습과 프로젝트를 기록합니다 · <a href="https://github.com/umggae">github.com/umggae</a></footer>
+    <footer class="foot">// ※ 본 보고서는 외부 감사를 받지 않은 자체 작성 자료이며, 직접 확인한 기록에 근거합니다.<br>// 나의 학습과 프로젝트를 기록합니다 · <a href="https://github.com/umggae">github.com/umggae</a></footer>
   </div>
 
   <div id="knit-1" class="lightbox" role="dialog" aria-modal="true" aria-label="뜨개작품 사진 1 크게 보기"><a class="lightbox-close" href="#knitting" aria-label="닫기">esc</a><img src="images/knit-01.png" alt="뜨개작품 사진 1"></div>
@@ -192,7 +280,7 @@
     </div>
     <div class="right">
       <span>UTF-8</span>
-      <span>committed by 권서연</span>
+      <span>unaudited · self-reported</span>
     </div>
   </div>
 
