@@ -1,5 +1,5 @@
 :root {
-  /* 배경·글씨: VS Code Dark Modern / 강조색: One Dark */
+  /* 배경·글씨: VS Code Dark Modern / 강조색: 맥 창 버튼 색 계열 */
   --bg: #1f1f1f;
   --surface: #252526;
   --surface2: #181818;
@@ -8,14 +8,14 @@
   --heading: #e8e8e8;
   --muted: #a6a6a6;
   --comment: #8b919c;
-  --accent: #d19a66;
-    --green: #98c379;
-  --yellow: #e5c07b;
-  --blue: #61afef;
-  --purple: #c678dd;
-  --string: #98c379;
-      --mono: "JetBrains Mono", monospace;
-  --focus: #d19a66;
+  --accent: #ff8f40;
+  --green: #28c840;
+  --yellow: #febc2e;
+  --blue: #3b9eff;
+  --purple: #b785ff;
+  --string: #7ee787;
+  --mono: "JetBrains Mono", monospace;
+  --focus: #ff8f40;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
